@@ -16,7 +16,7 @@ room.setScoreLimit(scoreLimit);
 room.setTimeLimit(timeLimit);
 room.setTeamsLock(true);
 
-var adminPassword = fumiga
+var adminPassword = fumiga;
 console.log("adminPassword : " + adminPassword);
 
 /* STADIUM */
