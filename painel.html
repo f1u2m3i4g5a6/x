@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel - Arena Lazy</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: black;
+            color: white;
+            font-size: 16px;
+            background-image: url('https://images.wallpaperscraft.com/image/single/forest_fog_bw_157928_1400x1050.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow: hidden;
+        }
+
+        /* Cabeçalho */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            width: 100%;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 30px;
+            color: rgb(238, 255, 0);
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: #00aaff;
+        }
+
+        .navbar a {
+            position: relative;
+            font-size: 18px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 30px;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #00aaff;
+        }
+
+        .navbar a::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+
+        .navbar a:hover::before {
+            width: 100%;
+        }
+
+        /* Menu Vertical */
+        .vertical-menu {
+            position: fixed;
+            top: 120px;
+            left: 10px;
+            width: 250px;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            z-index: 10;
+        }
+
+        .vertical-menu a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-size: 18px;
+            display: block;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .vertical-menu a:hover {
+            background-color: #333;
+            transform: scale(1.05);
+        }
+
+        /* Efeitos e transições */
+        .main-section {
+            padding: 40px 20px;
+            text-align: center;
+            max-width: 1200px;
+            margin: auto;
+            z-index: 10;
+            position: relative;
+            top: 20%;
+            transition: all 0.3s ease;
+        }
+
+        .category-buttons button {
+            background-color: rgba(0, 0, 0, 0.7);
+            border: none;
+            color: white;
+            padding: 15px 40px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .category-buttons button:hover {
+            background-color: #333;
+            transform: scale(1.05);
+        }
+
+        /* Adicionando efeito de transição de opacidade */
+        .fade-in {
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Estilo para o player de música */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            z-index: 20;
+        }
+
+        .music-player select,
+        .music-player button {
+            background-color: rgba(0, 0, 0, 0.6);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .music-player button:hover {
+            background-color: #333;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <a href="painel.html" class="logo"><img src="logolazy.png" alt="Logo" style="height: 50px;"></a>
+        <nav class="navbar">
+            <a href="loading.html">Início</a>
+            <a href="loadingsalas.html">Salas</a>
+            <a href="loadingdiscord.html" target="_blank">Discord</a>
+            <a href="loadingreclamacoes.html" target="_blank">Reclamações</a>
+        </nav>
+    </header>
+
+    <!-- Menu Vertical -->
+    <div class="vertical-menu">
+        <a href="chatadmin.html" class="fade-in">Chat Admin</a>
+        <a href="sistema.html" class="fade-in">Sistema</a>
+        <a href="logs.html" class="fade-in">Logs</a>
+    </div>
+
+    <!-- Player de música -->
+    <div class="music-player">
+        <select id="musicSelector">
+            <script>
+                for (let i = 1; i <= 73; i++) {
+                    document.write(`<option value="${i}.mp3">${i}</option>`);
+                }
+            </script>
+        </select>
+        <audio id="audioPlayer" src="1.mp3"></audio>
+        <button id="playButton">Play</button>
+        <button id="pauseButton">Pausar</button>
+    </div>
+
+    <script>
+        const audioPlayer = document.getElementById("audioPlayer");
+        const musicSelector = document.getElementById("musicSelector");
+        const playButton = document.getElementById("playButton");
+        const pauseButton = document.getElementById("pauseButton");
+
+        // Atualizar a música ao selecionar uma nova
+        musicSelector.addEventListener("change", () => {
+            audioPlayer.src = musicSelector.value;
+            audioPlayer.load();
+        });
+
+        // Botão de Play
+        playButton.addEventListener("click", () => {
+            audioPlayer.play();
+        });
+
+        // Botão de Pausar
+        pauseButton.addEventListener("click", () => {
+            audioPlayer.pause();
+        });
+    </script>
+
+</body>
+</html>

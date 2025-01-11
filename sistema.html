@@ -1,0 +1,427 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel - Arena Lazy</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            color: white;
+            font-size: 16px;
+            background-image: url('https://images.wallpaperscraft.com/image/single/forest_fog_bw_157928_1400x1050.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow: hidden;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 32px;
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: #00aaff;
+        }
+
+        .navbar a {
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 30px;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #00aaff;
+        }
+
+        .navbar a::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+
+        .navbar a:hover::before {
+            width: 100%;
+        }
+
+        .vertical-menu {
+            position: fixed;
+            top: 120px;
+            left: 10px;
+            width: 250px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            z-index: 10;
+        }
+
+        .vertical-menu a {
+            color: white;
+            padding: 18px;
+            text-decoration: none;
+            font-size: 18px;
+            display: block;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .vertical-menu a:hover {
+            background-color: #333;
+            transform: scale(1.05);
+        }
+
+        .main-section {
+            padding: 50px 20px;
+            text-align: center;
+            max-width: 1200px;
+            margin: auto;
+            z-index: 10;
+            position: relative;
+            top: 20%;
+            transition: all 0.3s ease;
+        }
+
+        .category-buttons button {
+            background-color: rgba(0, 0, 0, 0.8);
+            border: none;
+            color: white;
+            padding: 20px 50px;
+            font-size: 20px;
+            margin: 15px;
+            cursor: pointer;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .category-buttons button:hover {
+            background-color: #333;
+            transform: scale(1.1);
+        }
+
+        .fade-in {
+            animation: fadeIn 1.5s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.85);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .music-player select,
+        .music-player button {
+            background-color: rgba(0, 0, 0, 0.6);
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 16px;
+            margin: 5px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .music-player button:hover,
+        .music-player select:hover {
+            background-color: #333;
+            transform: scale(1.05);
+        }
+
+        .music-player select {
+            width: 180px;
+        }
+
+        .music-player button {
+            font-size: 20px;
+        }
+
+        .report-section {
+            position: fixed;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.85);
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            z-index: 20;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .report-section input,
+        .report-section textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 16px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .report-section button {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            background-color: #f1c40f;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .report-section button:hover {
+            background-color: #e67e22;
+        }
+
+        .report-message {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 8px;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .sent-message {
+            background-color: #28a745;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .error-message {
+            background-color: #dc3545;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .warning-message {
+            background-color: #ffc107;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="painel.html" class="logo"><img src="logolazy.png" alt="Logo" style="height: 55px;"></a>
+        <nav class="navbar">
+            <a href="loading.html">Início</a>
+            <a href="loadingsalas.html">Salas</a>
+            <a href="loadingdiscord.html" target="_blank">Discord</a>
+            <a href="loadingreclamacoes.html" target="_blank">Reclamações</a>
+        </nav>
+    </header>
+
+    <div class="music-player">
+        <select id="musicSelect">
+            <option value="1.mp3">1</option>
+            <option value="2.mp3">2</option>
+            <option value="3.mp3">3</option>
+            <option value="4.mp3">4</option>
+            <option value="5.mp3">5</option>
+            <option value="6.mp3">6</option>
+            <option value="7.mp3">7</option>
+            <option value="8.mp3">8</option>
+            <option value="9.mp3">9</option>
+            <option value="10.mp3">10</option>
+            <option value="11.mp3">11</option>
+            <option value="12.mp3">12</option>
+            <option value="13.mp3">13</option>
+            <option value="14.mp3">14</option>
+            <option value="15.mp3">15</option>
+            <option value="16.mp3">16</option>
+            <option value="17.mp3">17</option>
+            <option value="18.mp3">18</option>
+            <option value="19.mp3">19</option>
+            <option value="20.mp3">20</option>
+            <option value="21.mp3">21</option>
+            <option value="22.mp3">22</option>
+            <option value="23.mp3">23</option>
+            <option value="24.mp3">24</option>
+            <option value="25.mp3">25</option>
+            <option value="26.mp3">26</option>
+            <option value="27.mp3">27</option>
+            <option value="28.mp3">28</option>
+            <option value="29.mp3">29</option>
+            <option value="30.mp3">30</option>
+            <option value="31.mp3">31</option>
+            <option value="32.mp3">32</option>
+            <option value="33.mp3">33</option>
+            <option value="34.mp3">34</option>
+            <option value="35.mp3">35</option>
+            <option value="36.mp3">36</option>
+            <option value="37.mp3">37</option>
+            <option value="38.mp3">38</option>
+            <option value="39.mp3">39</option>
+            <option value="40.mp3">40</option>
+            <option value="41.mp3">41</option>
+            <option value="42.mp3">42</option>
+            <option value="43.mp3">43</option>
+            <option value="44.mp3">44</option>
+            <option value="45.mp3">45</option>
+            <option value="46.mp3">46</option>
+            <option value="47.mp3">47</option>
+            <option value="48.mp3">48</option>
+            <option value="49.mp3">49</option>
+            <option value="50.mp3">50</option>
+            <option value="51.mp3">51</option>
+            <option value="52.mp3">52</option>
+            <option value="53.mp3">53</option>
+            <option value="54.mp3">54</option>
+            <option value="55.mp3">55</option>
+            <option value="56.mp3">56</option>
+            <option value="57.mp3">57</option>
+            <option value="58.mp3">58</option>
+            <option value="59.mp3">59</option>
+            <option value="60.mp3">60</option>
+            <option value="61.mp3">61</option>
+            <option value="62.mp3">62</option>
+            <option value="63.mp3">63</option>
+            <option value="64.mp3">64</option>
+            <option value="65.mp3">65</option>
+            <option value="66.mp3">66</option>
+            <option value="67.mp3">67</option>
+            <option value="68.mp3">68</option>
+            <option value="69.mp3">69</option>
+            <option value="70.mp3">70</option>
+            <option value="71.mp3">71</option>
+            <option value="72.mp3">72</option>
+            <option value="73.mp3">73</option>
+        </select>
+        <button id="playMusic">Play</button>
+        <audio id="audioPlayer" hidden></audio>
+    </div>
+
+    <div class="report-section">
+        <input type="text" id="reportName" placeholder="Seu nome..." />
+        <textarea id="reportText" placeholder="Faça seu relatório..."></textarea>
+        <button id="sendReport">Enviar Relatório</button>
+        <div id="reportMessage" class="report-message"></div>
+    </div>
+
+    <script>
+        const sendReportButton = document.getElementById("sendReport");
+        const reportText = document.getElementById("reportText");
+        const reportName = document.getElementById("reportName");
+        const reportMessage = document.getElementById("reportMessage");
+
+        const musicSelect = document.getElementById("musicSelect");
+        const playMusicButton = document.getElementById("playMusic");
+        const audioPlayer = document.getElementById("audioPlayer");
+
+        sendReportButton.addEventListener("click", () => {
+            const reportContent = reportText.value.trim();
+            const userName = reportName.value.trim();
+            const ip = "192.168.1.1";
+
+            if (reportContent && userName) {
+                fetch("https://discord.com/api/webhooks/1327428465624088586/-Uf6bvL6jnPqVcu6LLHDpccONva3YxTmnpb8j8zgw6woyLPPbnSW6nhixaiQ_3eALxzj", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        username: "Arena Lazy",
+                        avatar_url: "https://media.discordapp.net/attachments/1327098120374325370/1327098184358428732/image0.jpg",
+                        embeds: [{
+                            color: 16219791,
+                            title: "Novo Relatório",
+                            description: `${userName} reportou um relatório!`,
+                            fields: [
+                                { name: "Relatório", value: reportContent, inline: false },
+                                { name: "IP", value: ip, inline: false }
+                            ],
+                            footer: { text: "Arena Lazy - Relatório" }
+                        }]
+                    })
+                }).then(response => {
+                    if (response.ok) {
+                        reportMessage.textContent = "Relatório enviado com sucesso!";
+                        reportMessage.classList.add("sent-message");
+                        reportText.value = "";
+                        reportName.value = "";
+                    } else {
+                        reportMessage.textContent = "Erro ao enviar o relatório. Tente novamente mais tarde.";
+                        reportMessage.classList.add("error-message");
+                    }
+                }).catch(error => {
+                    reportMessage.textContent = "Erro ao conectar ao webhook.";
+                    reportMessage.classList.add("error-message");
+                });
+            } else {
+                reportMessage.textContent = "Por favor, preencha todos os campos.";
+                reportMessage.classList.add("warning-message");
+            }
+        });
+
+        playMusicButton.addEventListener("click", () => {
+            const selectedMusic = musicSelect.value;
+            audioPlayer.src = selectedMusic;
+            audioPlayer.play();
+        });
+    </script>
+
+</body>
+</html>

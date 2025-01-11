@@ -1,0 +1,211 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Logs - Arena Lazy</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #fff;
+            font-size: 18px;
+            background-image: url('https://images.wallpaperscraft.com/image/single/forest_fog_bw_157928_1400x1050.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow: hidden;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            font-size: 32px;
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: #00aaff;
+        }
+
+        .navbar a {
+            font-size: 18px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 30px;
+            letter-spacing: 1px;
+            padding: 5px 10px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: #ffcc00;
+            color: #000;
+        }
+
+        .main-section {
+            padding: 80px 20px 40px;
+            text-align: center;
+            max-width: 1200px;
+            margin: auto;
+            position: relative;
+            top: 15%;
+            z-index: 10;
+        }
+
+        .main-section h2 {
+            font-size: 36px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .main-section p {
+            font-size: 18px;
+            color: #bbb;
+            margin-top: 20px;
+        }
+
+        .logs-section {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+            z-index: 20;
+            width: 70%;
+            max-width: 900px;
+            transition: all 0.3s ease;
+        }
+
+        .logs-section textarea {
+            width: 100%;
+            height: 250px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            border: 2px solid #555;
+            background-color: #222;
+            color: #fff;
+            font-size: 16px;
+            line-height: 1.5;
+            resize: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .logs-section textarea:focus {
+            border-color: #ffcc00;
+            outline: none;
+        }
+
+        .logs-section button {
+            width: 100%;
+            padding: 18px;
+            font-size: 18px;
+            border: none;
+            border-radius: 12px;
+            background-color: #ffcc00;
+            color: #000;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .logs-section button:hover {
+            background-color: #ff9900;
+        }
+
+        .logs-section button:active {
+            background-color: #e68a00;
+        }
+
+        @media (max-width: 768px) {
+            .logs-section {
+                width: 90%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="painel.html" class="logo">Arena Lazy</a>
+        <nav class="navbar">
+            <a href="loading.html">Início</a>
+            <a href="loadingsalas.html">Salas</a>
+            <a href="loadingdiscord.html" target="_blank">Discord</a>
+            <a href="loadingreclamacoes.html" target="_blank">Reclamações</a>
+        </nav>
+    </header>
+
+    <div class="main-section">
+        <h2>Painel de Logs</h2>
+    </div>
+
+    <div class="logs-section">
+        <textarea id="logText" placeholder="Escreva seu log aqui..."></textarea>
+        <button id="sendLog">Enviar Log</button>
+    </div>
+
+    <script>
+        const sendLogButton = document.getElementById("sendLog");
+        const logText = document.getElementById("logText");
+
+        sendLogButton.addEventListener("click", () => {
+            const logContent = logText.value.trim();
+            if (logContent) {
+                fetch("https://discord.com/api/webhooks/1327428465624088586/-Uf6bvL6jnPqVcu6LLHDpccONva3YxTmnpb8j8zgw6woyLPPbnSW6nhixaiQ_3eALxzj", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        username: "Arena Lazy",
+                        avatar_url: "https://media.discordapp.net/attachments/1327098120374325370/1327098184358428732/image0.jpg",
+                        content: logContent
+                    })
+                }).then(response => {
+                    if (response.ok) {
+                        alert("Log enviado com sucesso!");
+                        logText.value = "";
+                    } else {
+                        alert("Erro ao enviar o log. Tente novamente mais tarde.");
+                    }
+                }).catch(error => {
+                    alert("Erro ao conectar ao webhook.");
+                });
+            } else {
+                alert("Por favor, escreva algo no log antes de enviar.");
+            }
+        });
+    </script>
+
+</body>
+</html>

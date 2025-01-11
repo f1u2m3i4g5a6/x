@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uniformes Lazy</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: black;
+            background-image: url('https://images.wallpaperscraft.com/image/single/forest_fog_bw_157928_1400x1050.jpg');
+            background-size: cover; /* Faz a imagem cobrir toda a tela */
+            background-position: center; /* Centraliza a imagem */
+            background-attachment: fixed; /* Faz a imagem de fundo ficar fixa ao rolar a página */
+        }
+
+        h1, h2 {
+            color: rgb(255, 251, 0);
+            text-align: center;
+            margin-bottom: 20px;
+            margin-top: 10%; /* Desce o título em 15% */
+        }
+
+        p {
+            color: white; /* Altera as frases cinzas para branco */
+            text-align: center;
+            font-style: italic; /* Coloca as frases em itálico */
+        }
+
+        /* Cabeçalho */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.39);
+            backdrop-filter: blur(10px);
+            width: 100%;
+            padding: 15px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 25px;
+            color: rgb(238, 255, 0);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .navbar a {
+            position: relative;
+            font-size: 18px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 40px;
+        }
+
+        .navbar a::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: .3s;
+        }
+
+        .navbar a:hover::before {
+            width: 100%;
+        }
+
+        /* Seção Principal */
+        .main-section {
+            margin-top: 120px; /* Adiciona o espaço para o cabeçalho fixo */
+            padding: 40px 20px;
+            text-align: center;
+            max-width: 1200px;
+            margin: auto;
+            z-index: 10; /* Garante que o conteúdo da seção principal apareça sobre a imagem de fundo */
+        }
+
+        .uniforms img {
+            width: 64% !important;
+            height: auto;
+            display: block;
+            margin: 20px auto; /* Centraliza a imagem */
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .category-buttons {
+            margin-top: 20px; /* Ajusta o espaço entre as imagens e os botões */
+        }
+
+        .category-buttons button {
+            background-color: black; /* Cor de fundo preta */
+            border: none;
+            color: white;
+            padding: 15px 40px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .category-buttons button:hover {
+            background-color: #333; /* Cor de fundo ao passar o mouse */
+            transform: scale(1.05);
+        }
+
+        .titulo p, .category-buttons p {
+            color: white; /* Cor branca para o texto */
+            font-size: 1.2em;
+            margin-top: 15px;
+        }
+
+        /* Ajustando o estilo das imagens de fundo */
+        .principal img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .part2 {
+            background-color: rgba(0, 0, 0, 0.466);
+            font-size: 25px;
+            width: 100%;
+            position: absolute;
+            top: 100%;
+        }
+
+        .part2 .n {
+            display: flex;  
+            position: absolute;
+            top: 25%;
+            left: 26%;
+            width: 600px;
+            height: 400px;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .titulo a {
+            color: #00aaff;
+            text-decoration: none;
+        }
+
+        .titulo h1 {
+            font-size: 2.35em;
+        }
+
+        /* Imagem Principal */
+        .principal img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <a href="loading.html" class="logo"><img src="logolazy.png" alt="Logo" style="height: 50px;"></a>
+        <nav class="navbar">
+            <a href="loading.html">Início</a>
+            <a href="loadingsalas.html">Salas</a>
+            <a href="loadingdiscord.html" target="_blank">Discord</a>
+            <a href="loadingtemporadas.html" target="_blank">Temporadas</a>
+        </nav>
+    </header>
+
+    <!-- Seção Principal -->
+    <div class="main-section" id="home">
+        <h1>Uniformes - Arena Lazy</h1>
+        <p>Os uniformes presentes na sala estão aqui!</p>
+        <p>Escolha sua categoria de uniformes e veja-os em destaque.</p>
+
+        <div class="uniforms">
+            <img id="brasileiros" src="https://media.discordapp.net/attachments/1327198466392326158/1327216180598935623/image.png?ex=6782eaa3&is=67819923&hm=1668f8e1856541762ca484f4d09aa582dc67c3de9bc31600b113d07523e89109&=&format=webp&quality=lossless&width=774&height=423" alt="Uniformes Brasileiros" style="display: none; opacity: 0;">
+            <img id="estrangeiros" src="https://media.discordapp.net/attachments/1327198466392326158/1327216575606161408/image.png?ex=6782eb02&is=67819982&hm=e9e6d1b9ec39260a43d7ebda0d9e3e884c14be4a96b9ba0bed2d98204ca3a66c&=&format=webp&quality=lossless&width=871&height=423" alt="Uniformes Estrangeiros" style="display: none; opacity: 0;">
+            <img id="selecoes" src="https://media.discordapp.net/attachments/1327198466392326158/1327216974693924874/image.png?ex=6782eb61&is=678199e1&hm=8f75f638a301e27d99a0f8290731eb842509de1a8e44104909298dc6e11e4d19&=&format=webp&quality=lossless&width=1019&height=418" alt="Uniformes Seleções" style="display: block; opacity: 1;">
+        </div>
+
+        <div class="category-buttons">
+            <button onclick="showUniform('brasileiros')">Brasileiros</button>
+            <button onclick="showUniform('estrangeiros')">Estrangeiros</button>
+            <button onclick="showUniform('selecoes')">Seleções</button>
+        </div>
+
+    </div>
+
+    <script>
+        function showUniform(category) {
+            const categories = ['brasileiros', 'estrangeiros', 'selecoes'];
+            
+            categories.forEach(function(cat) {
+                const img = document.getElementById(cat);
+                if (cat === category) {
+                    img.style.display = 'block';
+                    img.style.opacity = '1'; // faz a imagem aparecer com transição suave
+                } else {
+                    img.style.display = 'none';
+                    img.style.opacity = '0'; // fade out a imagem
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

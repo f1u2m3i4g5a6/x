@@ -1,0 +1,213 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arena Lazy</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="icon" href="favicon.ico" type="image/icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2 {
+            color: rgb(255, 251, 0);
+        }
+
+        p {
+            color: rgb(109, 109, 109);
+        }
+
+        .conteiner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.39);
+            backdrop-filter: blur(10px);
+            width: 100%;
+            padding: 15px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 25px;
+            color: rgb(238, 255, 0);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .navbar a {
+            position: relative;
+            font-size: 18px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 40px;
+        }
+
+        .navbar a::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: .3s;
+        }
+
+        .navbar a:hover::before {
+            width: 100%;
+        }
+
+        img {
+            width: 100%;
+            height: 675px;
+        }
+
+        .titulo {
+            font-size: 25px;
+            width: 500px;
+            height: 250px;
+            position: absolute;
+            top: 40%;
+            left: 50px;
+        }
+
+        .part2, .part3 {
+            background-color: rgba(0, 0, 0, 0.466);
+            font-size: 25px;
+            width: 100%;
+            position: absolute;
+            top: 100%; /* Alterado de 99.5% para 100% para garantir a visibilidade */
+        }
+
+        .inverter { 
+            opacity: 0.4;
+            transform: scaleY(-1);
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        h1:hover {
+            color: white;
+        }
+
+        .n {
+            display: flex;  
+            position: absolute;
+            top: 25%;
+            left: 26%;
+            width: 600px;
+            height: 400px;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .titulo p {
+            color: white;
+            font-weight: normal;
+            font-style: italic;
+        }
+
+        .titulo a {
+            color: #00aaff;
+            text-decoration: none;
+        }
+
+        .titulo h1 {
+            font-size: 235%;
+        }
+
+        .part2 p, .part3 p {
+            color: white;
+        }
+
+        /* Novo conteúdo duplicado */
+        .part2 img, .part3 img {
+            width: 100%;
+            height: 675px;
+        }
+
+        .part2 .n, .part3 .n {
+            display: flex;  
+            position: absolute;
+            top: 25%;
+            left: 26%;
+            width: 600px;
+            height: 400px;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .footer {
+            color: rgb(109, 109, 109);
+            text-align: center;
+            font-size: 14px;
+            margin-top: 50px;
+            padding: 10px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header class="conteiner">
+        <a href="loadingadmin.html" class="logo"><img src="logolazy.png" alt="Logo" style="height: 50px;"></a>
+        <nav class="navbar">
+            <a href="loading.html">Início</a>
+            <a href="loadingsalas.html">Salas</a>
+            <a href="loadinguniformes.html">Uniformes</a>
+            <a href="loadingdiscord.html" target="_blank">Discord</a>
+            <a href="loadingtemporadas.html" target="_blank">Temporadas</a>
+            <a href="loadingreclamacoes.html" target="_blank">Reclamações</a>
+        </nav>
+    </header>
+    <div class="principal">
+        <img src="https://images.wallpaperscraft.com/image/single/forest_fog_bw_157928_1400x1050.jpg" alt="">
+    </div> 
+    <div class="titulo">
+        <h1>Arena Lazy</h1>
+        <p>Bem-vindo à Arena Lazy! Aqui, a diversão é garantida com grandes competições e uma comunidade incrível. Venha viver momentos épicos e compartilhar boas risadas com a gente. E claro, não se esqueça de fazer parte da nossa galera no <a href="loadingdiscord.html" target="_blank">Discord</a> para ficar por dentro de tudo! E também, explore nossas <a href="loadingtemporadas.html" target="_blank">Temporadas</a> para mais emoção!</p>
+    </div>
+<div class="part2">
+    <img src="https://images.wallpaperscraft.com/image/single/forest_fog_bw_157928_1400x1050.jpg" class="inverter">
+    <div class="n" id="part3">
+        <div class="item">
+            <a href="https://www.haxball.com/play?c=nJadW_7X6Jc" target="_blank"><h1>Sala Normal</h1></a>
+            <p>A "Sala Normal" x3 do HaxBall oferece um jogo rápido e dinâmico com três jogadores por time. O objetivo é marcar 3 gols para vencer, mas se o tempo acabar antes disso, o time com mais gols feitos ganha. Ideal para quem busca ação, estratégia em equipe e uma experiência intensa e cheia de diversão!</p>
+        </div>
+
+        <div class="item" style="margin-top: 20px;"> <!-- Adicionando um espaço entre os itens -->
+            <a href="https://www.haxball.com/play?c=KaiB5a_Rfo8" target="_blank"><h1>Sala Flash</h1></a>
+            <p>A "Sala Flash" x3 no HaxBall é rápida e dinâmica, com partidas que acabam após o primeiro gol. O tempo é reduzido, tornando o jogo ainda mais ágil e intenso. Ideal para quem busca ação rápida e partidas curtas!</p>
+        </div>
+    </div>
+</div>
+    <footer class="footer">
+        <p>2025 Arena Lazy - Todos os direitos reservados</p>
+    </footer>
+</body>
+</html>

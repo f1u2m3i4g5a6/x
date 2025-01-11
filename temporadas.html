@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temporadas - Arena Lazy</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: black;
+            background-image: url('https://images.wallpaperscraft.com/image/single/forest_fog_bw_157928_1400x1050.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            animation: fadeIn 1s ease-out;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(15px);
+            width: 100%;
+            padding: 20px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+            animation: slideDown 1s ease-out;
+        }
+
+        .logo {
+            font-size: 28px;
+            color: rgb(238, 255, 0);
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        .navbar a {
+            position: relative;
+            font-size: 18px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 35px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .navbar a:hover {
+            color: rgb(238, 255, 0);
+            transform: translateY(-5px);
+        }
+
+        .navbar a::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s;
+        }
+
+        .navbar a:hover::before {
+            width: 100%;
+        }
+
+        .main-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            max-width: 1200px;
+            width: 100%;
+            margin-top: 120px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .section-header {
+            font-size: 4.5em;
+            color: rgb(238, 255, 0);
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .section-text {
+            font-size: 1.4em;
+            color: white;
+            text-align: center;
+            line-height: 1.6;
+            max-width: 800px;
+            margin-bottom: 50px;
+            font-style: italic;
+        }
+
+        .discord-info {
+            font-size: 1.6em;
+            color: white;
+            text-align: center;
+            max-width: 800px;
+            margin-top: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <a href="loading.html" class="logo"><img src="logolazy.png" alt="Logo" style="height: 55px;"></a>
+        <nav class="navbar">
+            <a href="loading.html">Início</a>
+            <a href="loadingsalas.html" target="_blank">Salas</a>
+            <a href="loadinguniformes.html" target="_blank">Uniformes</a>
+            <a href="loadingdiscord.html" target="_blank">Discord</a>
+        </nav>
+    </header>
+
+    <!-- Seção Principal -->
+    <div class="main-section">
+        <!-- Título da seção (Agora não é mais um link) -->
+        <h1 class="section-header">Temporadas</h1>
+
+        <!-- Texto explicativo -->
+        <p class="section-text">
+            Nas "Temporadas", os melhores jogadores de cada modo de jogo, Normal ou Flash, serão registrados em nosso Discord e website. Somente o melhor de cada categoria, com base em jogos, vitórias, empates, taxa de vitória, gols, assistências e CS, será arquivado. Além disso, os jogadores que fizerem mais gols contra também terão seu desempenho registrado.
+        </p>
+
+        <!-- Informações sobre o Discord -->
+        <p class="discord-info">
+            Para visualizar as tabelas e acompanhar os jogadores, é necessário entrar no nosso Discord! Lá você poderá conferir o desempenho e as estatísticas das temporadas.
+        </p>
+    </div>
+
+</body>
+</html>

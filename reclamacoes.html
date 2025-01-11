@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reclamações - Arena Lazy</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="icon" href="favicon.ico" type="image/icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #111111;
+            background-image: url('https://example.com/sua-imagem-de-fundo.jpg');
+            background-size: cover;
+            color: white;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: rgba(255, 204, 0, 0.8);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #222222;
+        }
+
+        header h1 {
+            color: #111111;
+            font-size: 3em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: rgba(17, 17, 17, 0.8);
+            padding: 15px 0;
+        }
+
+        nav a {
+            color: #ffcc00;
+            font-size: 1.2em;
+            text-decoration: none;
+            padding: 12px 20px;
+            margin: 0 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #ffcc00;
+            color: #111111;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            background-color: rgba(34, 34, 34, 0.8);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 1.1em;
+            color: #ffcc00;
+        }
+
+        input, textarea {
+            width: 85%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 2px solid #ffcc00;
+            border-radius: 5px;
+            background-color: #333333;
+            color: white;
+            font-size: 1.1em;
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #ffcc00;
+            color: #111111;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e6b800;
+        }
+
+        .bot-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 4px solid #ffcc00;
+        }
+
+        footer {
+            background-color: #111111;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Reclamações - Arena Lazy</h1>
+</header>
+
+<nav>
+    <a href="loading.html">Início</a>
+    <a href="loadingdiscord.html" target="_blank">Discord</a>
+</nav>
+
+<div class="container">
+    <img src="https://media.discordapp.net/attachments/1327098120374325370/1327098184358428732/image0.jpg?ex=67827cbf&is=67812b3f&hm=5225a7ef9d30c86b4df571047e5338c08952de294e6128fa4e32bec969d14c47&=&format=webp" alt="Bot Perfil" class="bot-image">
+    <h2>Denuncie um Problema</h2>
+    <form id="reclamacao-form">
+        <div class="form-group">
+            <label for="nome">Seu Nome (máx 20 caracteres):</label>
+            <input type="text" id="nome" name="nome" required maxlength="20">
+        </div>
+        <div class="form-group">
+            <label for="mensagem">Sua Reclamação (máx 100 caracteres):</label>
+            <textarea id="mensagem" name="mensagem" rows="5" required maxlength="100"></textarea>
+        </div>
+        <button type="submit">Enviar Denúncia</button>
+    </form>
+</div>
+
+<footer>
+    <p>&copy; 2025 Arena Lazy. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+    let lastSubmissionTime = localStorage.getItem('lastSubmissionTime') || 0;
+
+    // Função para obter o IP público do usuário via API
+    function getUserIP() {
+        return fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => data.ip)
+            .catch(() => 'IP desconhecido');
+    }
+
+    document.getElementById('reclamacao-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const nome = document.getElementById('nome').value;
+        const mensagem = document.getElementById('mensagem').value;
+
+        // Verifica se se passaram 15 minutos desde a última submissão
+        const currentTime = new Date().getTime();
+        if (currentTime - lastSubmissionTime < 900000) { // 15 minutos
+            alert('Você só pode enviar a denúncia novamente após 15 minutos!');
+            return;
+        }
+
+        getUserIP().then(ipv4 => {
+            const embed = {
+                username: "Arena Lazy",
+                avatar_url: "https://media.discordapp.net/attachments/1327098120374325370/1327098184358428732/image0.jpg?ex=67827cbf&is=67812b3f&hm=5225a7ef9d30c86b4df571047e5338c08952de294e6128fa4e32bec969d14c47&=&format=webp",
+                embeds: [{
+                    title: "⚠️ Denúncia - Arena Lazy",
+                    description: `**Denúncia de ${nome}**\n\n**Mensagem**: ${mensagem}\n**IPv4**: ${ipv4}`,
+                    color: 0xFF0000, // Vermelho
+                    fields: [
+                        {
+                            name: "👤 Nome do Denunciante",
+                            value: `${nome}`,
+                            inline: true
+                        },
+                        {
+                            name: "📝 Reclamação",
+                            value: `${mensagem}`,
+                            inline: false
+                        }
+                    ],
+                    footer: {
+                        text: "Arena Lazy - Denúncias",
+                        icon_url: "https://media.discordapp.net/attachments/1327098120374325370/1327098184358428732/image0.jpg?ex=67827cbf&is=67812b3f&hm=5225a7ef9d30c86b4df571047e5338c08952de294e6128fa4e32bec969d14c47&=&format=webp"
+                    },
+                    timestamp: new Date(),
+                    thumbnail: {
+                        url: "https://media.discordapp.net/attachments/1327098120374325370/1327098184358428732/image0.jpg?ex=67827cbf&is=67812b3f&hm=5225a7ef9d30c86b4df571047e5338c08952de294e6128fa4e32bec969d14c47&=&format=webp"
+                    },
+                    author: {
+                        name: "Arena Lazy",
+                        icon_url: "https://media.discordapp.net/attachments/1327098120374325370/1327098184358428732/image0.jpg?ex=67827cbf&is=67812b3f&hm=5225a7ef9d30c86b4df571047e5338c08952de294e6128fa4e32bec969d14c47&=&format=webp"
+                    }
+                }]
+            };
+
+            fetch('https://discord.com/api/webhooks/1327428465624088586/-Uf6bvL6jnPqVcu6LLHDpccONva3YxTmnpb8j8zgw6woyLPPbnSW6nhixaiQ_3eALxzj', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(embed)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("Sua denúncia foi enviada com sucesso!");
+                document.getElementById('reclamacao-form').reset();
+                localStorage.setItem('lastSubmissionTime', new Date().getTime());
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert("Reclamação enviada!");
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

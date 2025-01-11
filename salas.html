@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salas - Arena Lazy</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: black;
+            background-image: url('https://images.wallpaperscraft.com/image/single/forest_fog_bw_157928_1400x1050.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            animation: fadeIn 1s ease-out;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(15px);
+            width: 100%;
+            padding: 20px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+            animation: slideDown 1s ease-out;
+        }
+
+        .logo {
+            font-size: 28px;
+            color: rgb(238, 255, 0);
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        .navbar a {
+            position: relative;
+            font-size: 18px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 35px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .navbar a:hover {
+            color: rgb(238, 255, 0);
+            transform: translateY(-5px);
+        }
+
+        .navbar a::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s;
+        }
+
+        .navbar a:hover::before {
+            width: 100%;
+        }
+
+        .main-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            width: 100%;
+            margin-top: 120px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .menu-container {
+            width: 560px; /* 20% menor */
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: white;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .menu-container:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 35px rgba(0, 0, 0, 0.7);
+        }
+
+        .menu-container h1 {
+            font-size: 3em;
+            margin-bottom: 35px;
+            text-align: center;
+            color: rgb(238, 255, 0);
+            font-family: 'Arial', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .menu-container button {
+            background-color: black;
+            border: none;
+            color: white;
+            padding: 20px 40px;
+            font-size: 22px;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s, transform 0.2s ease;
+            margin-bottom: 20px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .menu-container button:hover {
+            background-color: #444;
+            transform: scale(1.05);
+        }
+
+        .image-container {
+            width: 432px; /* 20% menor */
+            height: 432px; /* 20% menor */
+            background-color: white;
+            border-radius: 30px;
+            background-image: url('https://media.discordapp.net/attachments/1327428427535614045/1327526970929577984/logolazy.png?ex=67836356&is=678211d6&hm=0da2772f80fc01ac18310e1cbfbecb8e1be60c4554e3776da9a68d3a7e95e91d&=&format=webp&quality=lossless&width=423&height=423');
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6);
+            animation: zoomIn 1s ease-out;
+            transition: transform 0.3s ease;
+        }
+
+        .image-container:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <a href="loading.html" class="logo"><img src="logolazy.png" alt="Logo" style="height: 55px;"></a>
+        <nav class="navbar">
+            <a href="loading.html">Início</a>
+            <a href="loadinguniformes.html" target="_blank">Uniformes</a>
+            <a href="loadingdiscord.html" target="_blank">Discord</a>
+            <a href="loadingtemporadas.html" target="_blank">Temporadas</a>
+        </nav>
+    </header>
+
+    <!-- Seção Principal -->
+    <div class="main-section">
+        <!-- Menu à esquerda -->
+        <div class="menu-container">
+            <h1>Salas</h1>
+            <button onclick="window.location.href='link-da-sala-normal.html'">Entrar na Sala Normal</button>
+            <button onclick="window.location.href='link-da-sala-flash.html'">Entrar na Sala Flash</button>
+        </div>
+
+        <!-- Imagem à direita -->
+        <div class="image-container"></div>
+    </div>
+
+</body>
+</html>
