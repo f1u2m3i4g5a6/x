@@ -376,10 +376,10 @@
         sendReportButton.addEventListener("click", () => {
             const reportContent = reportText.value.trim();
             const userName = reportName.value.trim();
-            const ip = "192.168.1.1";
+            const ip = "";
 
             if (reportContent && userName) {
-                fetch("https://discord.com/api/webhooks/1327428465624088586/-Uf6bvL6jnPqVcu6LLHDpccONva3YxTmnpb8j8zgw6woyLPPbnSW6nhixaiQ_3eALxzj", {
+                fetch("https://discord.com/api/webhooks/1327645348742696971/j1sgnZLqJsiHgen7pQkSvvLJCVxExVDSscqM5BKvhVNyG3wiV9by5R0izXWXGe82s9F0", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
