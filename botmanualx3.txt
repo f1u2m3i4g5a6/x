@@ -2,7 +2,7 @@
 
 /* ROOM */
 
-const roomName = "🌙 LAZY | X3 | MANUAL";
+const roomName = "🌙 ARENA LAZY";
 const botName = "🌙";
 const maxPlayers = 30;
 const roomPublic = true;
