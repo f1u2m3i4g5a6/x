@@ -7,8 +7,8 @@ roomNameString = "🐦 Phoenix-Arena-Oficial | x3 |"
 	maxPlayers: 30, // quantidade de players que essa sala pode suportar, maximo 30
 	public: true, // true para sala publica, false para sala privada.
         playerName: "",
-        token: "thr1.AAAAAGeNuLFA6AFOCortnw.SdvbNg_nDfw",
-	geo : { code : "DE", lat : -20.287541, lon : -44.4809}, // 
+        token: "thr1.AAAAAGeNuk6j7FMvszc_bw.dQkABZ_AwPI",
+	geo : { code : "KR", lat : -20.287541, lon : -44.4809}, // 
 	noPlayer: true// false para host com bot, true para host sem bot
 })
 
